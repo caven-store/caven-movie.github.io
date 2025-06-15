@@ -4,117 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booming Films - Akèy</title>
-    <style>
-        /* Tout kòd CSS la rete egzakteman menm jan an */
-        body { background-color: #141414; color: #ffffff; font-family: Arial, sans-serif; margin: 0; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background-color: rgba(20, 20, 20, 0.5); position: fixed; width: 100%; top: 0; z-index: 100; transition: background-color 0.3s; }
-        .navbar.scrolled { background-color: #141414; }
-        .logo { color: #E50914; font-size: 2em; font-weight: bold; text-decoration: none; }
-        .nav-links a { color: #e5e5e5; text-decoration: none; margin-left: 20px; }
-        .nav-links a:hover { color: #b3b3b3; }
-        .hero { height: 80vh; background-image: linear-gradient(to top, rgba(20,20,20,1) 0%, rgba(20,20,20,0) 20%), url('images/poster-inception.jpg'); /* NOUVO: Nou mete yon imaj reyèl isit la */ background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 0 50px 60px 50px; }
-        .hero-content h1 { font-size: 3.5em; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.2em; max-width: 50%; }
-        .movie-section { padding: 20px 50px; }
-        .movie-row h2 { font-size: 1.5em; }
-        .movie-posters { display: flex; gap: 15px; overflow-y: hidden; overflow-x: auto; padding-bottom: 15px; }
-        .movie-posters::-webkit-scrollbar { height: 8px; }
-        .movie-posters::-webkit-scrollbar-thumb { background-color: #333; border-radius: 4px; }
-        .poster { flex: 0 0 180px; height: 270px; background-color: #333; border-radius: 5px; transition: transform 0.2s; cursor: pointer; }
-        .poster:hover { transform: scale(1.05); }
-        /* NOUVO: Stil pou imaj postè a */
-        .poster img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-        }
+    <link rel="manifest" href="manifest.json"> <style>
+        /* Tout CSS la rete menm jan... */
     </style>
 </head>
 <body>
-<img src="images/poster-inception.jpg" alt="Tès Imaj" width="200">
-    <header class="navbar" id="navbar">
-        <a href="#" class="logo">FILMS</a>
-        <nav class="nav-links">
-            <a href="#">Akèy</a>
-            <a href="#">Seri</a>
-            <a href="#">Fim</a>
-            <a href="#">Lis Mwen</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Inception</h1>
-                <p>Yon vòlè ki vòlè enfòmasyon nan antre nan rèv moun jwenn yon dènye chans pou l refè vi li.</p>
-            </div>
-        </section>
-
-        <section class="movie-section">
-            <div class="movie-row">
-                <h2>Popilè Kounye a</h2>
-                <div class="movie-posters" id="popular-movies"></div>
-            </div>
-
-            <div class="movie-row">
-                <h2>Fim Aksyon</h2>
-                <div class="movie-posters" id="action-movies"></div>
-            </div>
-        </section>
-    </main>
-    
     <script>
-        // Ansyen kòd pou navbar la rete la
-        const navbar = document.getElementById('navbar');
-        window.onscroll = function() { /* ... */ };
-
-        // --- NOUVO KÒD POU AFICHE FIM YO ---
-
-        // 1. "FO" BAZ DONE NOU AN
-        // Lis fim popilè yo
-        const popularMovies = [
-            { title: 'Inception', posterUrl: 'images/poster-inception.jpg' },
-            { title: 'The Matrix', posterUrl: 'images/fim2.png' },
-            { title: 'Interstellar', posterUrl: 'images/fim3.png' }
-            // Ajoute lòt fim popilè isit la...
-        ];
-        
-        // Lis fim aksyon yo
-        const actionMovies = [
-            { title: 'The Dark Knight', posterUrl: 'images/poster-dark-knight.jpg' },
-            { title: 'John Wick', posterUrl: 'images/poster-john-wick.jpg' },
-            { title: 'Mad Max: Fury Road', posterUrl: 'images/poster-mad-max.jpg' }
-            // Ajoute lòt fim aksyon isit la...
-        ];
-
-
-        // 2. "IZIN" KI PRAL BATI KÒD HTML LA
-        function displayMovies(movieList, containerId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = ''; // Netwaye veso a anvan
-
-            movieList.forEach(movie => {
-                const posterDiv = document.createElement('div');
-                posterDiv.className = 'poster';
-                
-                const posterImg = document.createElement('img');
-                posterImg.src = movie.posterUrl;
-                posterImg.alt = movie.title;
-
-                posterDiv.appendChild(posterImg);
-                container.appendChild(posterDiv);
-            });
-        }
-
-        // 3. NOU RELE "IZIN" NAN POU L TRAVAY
-        // Lè paj la fin chaje nèt, nou di l pou l afiche fim yo
-        document.addEventListener('DOMContentLoaded', function() {
-            displayMovies(popularMovies, 'popular-movies');
-            displayMovies(actionMovies, 'action-movies');
-        });
-
+        // Tout JavaScript la rete menm jan...
     </script>
-
 </body>
 </html>
