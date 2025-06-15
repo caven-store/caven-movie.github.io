@@ -115,6 +115,7 @@
     </style>
 </head>
 <body>
+<img src="test.jpg" alt="Tès Final Imaj" width="200">
 
     <header class="navbar" id="navbar">
         <a href="#" class="logo">FILMS</a>
@@ -146,55 +147,7 @@
             </div>
         </section>
     </main>
-    
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.onscroll = function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        };
-
-      // Anndan <script> nan index.html, ranplase lis fim yo ak sa SÈLMAN:
-const popularMovies = [
-    { title: 'Fim Tès', posterUrl: 'images/test.jpg' },
-    { title: 'Fim Tès', posterUrl: 'images/test.jpg' },
-    { title: 'Fim Tès', posterUrl: 'images/test.jpg' }
-];
-
- // N ap kite sa vid pou tès la
-        
-        
-        const actionMovies = [
-            { title: 'The Dark Knight', posterUrl: 'images/poster-dark-knight.jpg' },
-            { title: 'John Wick', posterUrl: 'images/poster-john-wick.jpg' },
-            { title: 'Mad Max: Fury Road', posterUrl: 'images/poster-mad-max.jpg' }
-        ];
-
-        function displayMovies(movieList, containerId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = ''; 
-
-            movieList.forEach(movie => {
-                const posterDiv = document.createElement('div');
-                posterDiv.className = 'poster';
-                
-                const posterImg = document.createElement('img');
-                posterImg.src = movie.posterUrl;
-                posterImg.alt = movie.title;
-
-                posterDiv.appendChild(posterImg);
-                container.appendChild(posterDiv);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            displayMovies(popularMovies, 'popular-movies');
-            displayMovies(actionMovies, 'action-movies');
-        });
-    </script>
+     
 
 </body>
 </html>
