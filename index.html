@@ -5,12 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booming Films - Akèy</title>
     <link rel="manifest" href="manifest.json"> <style>
-        /* Tout CSS la rete menm jan... */
+        /* Stil Jeneral ak Tèm Nwa */
+        body {
+            background-color: #141414; /* Nwa Netflix la */
+            color: #ffffff; /* Tèks an blan */
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* --- Ba Navigasyon (Navbar) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Mete espas ant logo a ak lyen yo */
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(20, 20, 20, 0.5); /* Yon ti transparan */
+            position: fixed; /* Fè l rete anlè menm lè n ap defile */
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+
+        .navbar.scrolled {
+            background-color: #141414; /* Tounen nwa nèt lè nou defile */
+        }
+
+        .logo {
+            color: #E50914; /* Wouj Netflix la */
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #e5e5e5;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .nav-links a:hover {
+            color: #b3b3b3;
+        }
+
+        /* --- Seksyon Hero (Gwo Fim Anlè a) --- */
+        .hero {
+            height: 80vh; /* Pran 80% wotè ekran an */
+            background-image: linear-gradient(to top, rgba(20,20,20,1) 0%, rgba(20,20,20,0) 20%), url('images/poster-inception.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end; /* Aliyen kontni an anba */
+            padding: 0 50px 60px 50px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2em;
+            max-width: 50%;
+        }
+
+        /* --- Ranje Fim yo --- */
+        .movie-section {
+            padding: 20px 50px;
+        }
+
+        .movie-row h2 {
+            font-size: 1.5em;
+        }
+
+        .movie-posters {
+            display: flex;
+            gap: 15px; /* Espas ant postè yo */
+            overflow-y: hidden; /* Kache ba defileman vètikal la */
+            overflow-x: auto; /* Montre ba defileman orizontal la si sa nesesè */
+            padding-bottom: 15px; /* Espas pou ba defileman an */
+        }
+
+        .movie-posters::-webkit-scrollbar {
+            height: 8px;
+        }
+        .movie-posters::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .poster {
+            flex: 0 0 180px; /* Pa kite l retresi, lajè fiks 180px */
+            height: 270px;
+            background-color: #333; /* Koulè pwovizwa pou postè yo */
+            border-radius: 5px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .poster:hover {
+            transform: scale(1.05); /* Fè l vin yon ti kras pi gwo */
+        }
+        
+        .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
+
+    <header class="navbar" id="navbar">
+        <a href="#" class="logo">FILMS</a>
+        <nav class="nav-links">
+            <a href="#">Akèy</a>
+            <a href="#">Seri</a>
+            <a href="#">Fim</a>
+            <a href="#">Lis Mwen</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Inception</h1>
+                <p>Yon vòlè ki vòlè enfòmasyon nan antre nan rèv moun jwenn yon dènye chans pou l refè vi li.</p>
+            </div>
+        </section>
+
+        <section class="movie-section">
+            <div class="movie-row">
+                <h2>Popilè Kounye a</h2>
+                <div class="movie-posters" id="popular-movies"></div>
+            </div>
+
+            <div class="movie-row">
+                <h2>Fim Aksyon</h2>
+                <div class="movie-posters" id="action-movies"></div>
+            </div>
+        </section>
+    </main>
+    
     <script>
-        // Tout JavaScript la rete menm jan...
+        const navbar = document.getElementById('navbar');
+        window.onscroll = function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        const popularMovies = [
+            { title: 'Inception', posterUrl: 'images/poster-inception.jpg' },
+            { title: 'The Matrix', posterUrl: 'images/poster-matrix.jpg' },
+            { title: 'Interstellar', posterUrl: 'images/poster-interstellar.jpg' }
+        ];
+        
+        const actionMovies = [
+            { title: 'The Dark Knight', posterUrl: 'images/poster-dark-knight.jpg' },
+            { title: 'John Wick', posterUrl: 'images/poster-john-wick.jpg' },
+            { title: 'Mad Max: Fury Road', posterUrl: 'images/poster-mad-max.jpg' }
+        ];
+
+        function displayMovies(movieList, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; 
+
+            movieList.forEach(movie => {
+                const posterDiv = document.createElement('div');
+                posterDiv.className = 'poster';
+                
+                const posterImg = document.createElement('img');
+                posterImg.src = movie.posterUrl;
+                posterImg.alt = movie.title;
+
+                posterDiv.appendChild(posterImg);
+                container.appendChild(posterDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayMovies(popularMovies, 'popular-movies');
+            displayMovies(actionMovies, 'action-movies');
+        });
     </script>
+
 </body>
 </html>
